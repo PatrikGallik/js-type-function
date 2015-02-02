@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Router test</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript" src="../src/module.js"></script>
+  <script type="text/javascript">
+    var kokot = 'jeeej';
+    var p = TypeFunction.create(
+      ['String', 'Number', 'Function'],
+      function(arg1, arg2, arg3) {
+        console.log(arguments);
+        console.log(this);
+        console.log(arg1);
+        console.log(arg2);
+        console.log(arg3);
+      }
+    );
+    p('och', 123, function(){});
+  </script>
+</html>

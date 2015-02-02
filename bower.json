@@ -1,0 +1,11 @@
+{
+  "name": "js-typed-function",
+  "version": "0.0.0",
+  "dependencies": {},
+  "ignore": [
+    "test",
+    "package.json",
+    ".travis.yml"
+  ]
+}
+

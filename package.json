@@ -1,0 +1,29 @@
+{
+  "name": "js-typed-function",
+  "version": "0.0.0",
+  "description": "Create function with typed parameters",
+  "license": "MIT",
+  "author": {
+    "name": "Name here",
+    "email": "email@here",
+    "url": "https://github.com/NameHere"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "karma": "^0.12.21",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-mocha": "^0.1.7",
+    "mocha": "^1.21.4",
+    "karma-sinon": "^1.0.4"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.js"
+  }
+}
