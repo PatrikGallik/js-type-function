@@ -1,5 +1,5 @@
 /**
- * Type function
+ * TypeFunction
  * Create your function with arguments type check.
  *
  * @author   Patrik Gallik (<https://github.com/PatrikGallik>)
@@ -10,35 +10,18 @@
 ;(function (global) {
 	'use strict'
 
-  function _isString(variable) {
-    return toString.call(variable) == '[object String]';
-  }
-
-  function _isNumber(variable) {
-    return toString.call(variable) == '[object Number]';
-  }
-
-  function _isFunction(variable) {
-    return toString.call(variable) == '[object Function]';
+  function _getType(variable) {
+    var type = toString.call(variable);
+    return type.substring(8, type.length-1);
   }
 
   function _checkType(type, variable) {
-    if (type === 'String') {
-      return _isString(variable);
-    } else if (type === 'Number') {
-      return _isNumber(variable);
-    } else if (type == 'Function') {
-      return _isFunction(variable);
-    } else {
-      return false;
-    }
+    return type === _getType(variable);
   }
 
-	var TypeFunction = {
-		create: function(parameters, body) {
-			return function() {
+  function create(parameters, body) {
+    return function() {
         var passed = true;
-        console.log(arguments);
 
         for (var _i = 0; _i < arguments.length; _i++) {
           if (! _checkType(parameters[_i], arguments[_i])) {
@@ -48,15 +31,14 @@
           }
         }
 
-        var args = Array.prototype.slice(arguments);
-
         if (passed) {
           body.apply(this, arguments);
-        } else {
-          console.log('Bad arguments');
         }
       }
-		}
+  }
+
+	var TypeFunction = {
+		create: create
 	};
 
 	if (typeof module === 'object' && typeof module.exports === 'object') {
