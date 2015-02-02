@@ -15,11 +15,7 @@ describe("MyModule", function() {
 
   describe("test function", function() {
 
-    it("should return that it is Batman", function() {
-      var test = TypeFunction.create();
 
-      test();
-    });
 
   });
 
