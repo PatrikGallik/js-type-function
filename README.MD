@@ -14,7 +14,28 @@ var createUser = TypeFunction.create(['String'], function(name) {
   // ...
 });
 createUser('John'); // will pass
-createUser(123); // will log error
+createUser(123); // will throw an exception
+```
+
+### Suported types
+
+* String
+* Number
+* Object
+* Array
+* RegExp
+
+### Catching exceptions
+
+Invoking function with bad arguments will throw `InvalidArgumentsException`. It contains list of invalid arguments.
+
+```
+try {
+  createUser(123)
+} catch (e) {
+  console.log(e.invalidArguments);
+  // will log "Argument: "123" should be String, Number given. "
+}
 ```
 
 ## License

@@ -19,20 +19,28 @@
     return type === _getType(variable);
   }
 
+  function InvalidArgumentsException(args) {
+    this.invalidArguments = args;
+  }
+
   function create(parameters, body) {
     return function() {
         var passed = true;
+        var errors = [];
 
         for (var _i = 0; _i < arguments.length; _i++) {
           if (! _checkType(parameters[_i], arguments[_i])) {
-            console.log('Error: bad argument: "' + arguments[_i] + '" should be ' +
-              parameters[_i] + ', ' + toString.call(arguments[_i]) + ' given.');
+            var log = 'Argument: "' + arguments[_i] + '" should be ' +
+              parameters[_i] + ', ' + _getType(arguments[_i]) + ' given. ';
+            errors.push(log);
             passed = false;
           }
         }
 
         if (passed) {
-          body.apply(this, arguments);
+          return body.apply(this, arguments);
+        } else {
+          throw new InvalidArgumentsException(errors);
         }
       }
   }

@@ -1,6 +1,6 @@
 var expect = chai.expect;
 
-describe("MyModule", function() {
+describe("TypeFunction", function() {
 
   var sandbox;
 
@@ -13,9 +13,9 @@ describe("MyModule", function() {
     sandbox.restore();
   });
 
-  describe("test function", function() {
+  describe("create function", function() {
 
-
+  //
 
   });
 
