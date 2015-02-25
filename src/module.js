@@ -7,12 +7,13 @@
  * @license  MIT
  */
 
-;(function (global) {
-	'use strict'
+;
+(function (global) {
+  'use strict'
 
   function _getType(variable) {
     var type = toString.call(variable);
-    return type.substring(8, type.length-1);
+    return type.substring(8, type.length - 1);
   }
 
   function _checkType(type, variable) {
@@ -24,37 +25,39 @@
   }
 
   function create(parameters, body) {
-    return function() {
-        var passed = true;
-        var errors = [];
+    return function () {
+      var passed = true;
+      var errors = [];
 
-        for (var _i = 0; _i < arguments.length; _i++) {
-          if (! _checkType(parameters[_i], arguments[_i])) {
-            var log = 'Argument: "' + arguments[_i] + '" should be ' +
-              parameters[_i] + ', ' + _getType(arguments[_i]) + ' given. ';
-            errors.push(log);
-            passed = false;
-          }
-        }
-
-        if (passed) {
-          return body.apply(this, arguments);
-        } else {
-          throw new InvalidArgumentsException(errors);
+      for (var _i = 0; _i < arguments.length; _i++) {
+        if (!_checkType(parameters[_i], arguments[_i])) {
+          var log = 'Argument: "' + arguments[_i] + '" should be ' +
+            parameters[_i] + ', ' + _getType(arguments[_i]) + ' given. ';
+          errors.push(log);
+          passed = false;
         }
       }
+
+      if (passed) {
+        return body.apply(this, arguments);
+      } else {
+        throw new InvalidArgumentsException(errors);
+      }
+    }
   }
 
-	var TypeFunction = {
-		create: create
-	};
+  var TypeFunction = {
+    create: create
+  };
 
-	if (typeof module === 'object' && typeof module.exports === 'object') {
-		module.exports = TypeFunction;
-	} else if (typeof define === 'function' && define.amd) {
-		define(function () { return TypeFunction });
-	} else {
-		global.TypeFunction = TypeFunction;
-	}
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = TypeFunction;
+  } else if (typeof define === 'function' && define.amd) {
+    define(function () {
+      return TypeFunction
+    });
+  } else {
+    global.TypeFunction = TypeFunction;
+  }
 
 }(typeof window !== "undefined" ? window : this));
