@@ -3,21 +3,29 @@
  * Create your function with arguments type check.
  *
  * @author   Patrik Gallik (<https://github.com/PatrikGallik>)
- * @version  0.0.1
+ * @version  0.1.0
  * @license  MIT
  */
 
 ;
 (function (global) {
-  'use strict'
+  'use strict';
 
   function _getType(variable) {
     var type = toString.call(variable);
     return type.substring(8, type.length - 1);
   }
 
+  function _isInteger(variable) {
+    return typeof variable === 'number' && (variable % 1) === 0
+  }
+
   function _checkType(type, variable) {
-    return type === _getType(variable);
+    if (type === 'Integer') {
+      return _isInteger(variable);
+    } else {
+      return type === _getType(variable);
+    }
   }
 
   function InvalidArgumentsException(args) {

@@ -7,7 +7,7 @@ The module supports CommonJS, AMD (require.js) or global assignment to variable 
 
 ## Usage
 
-Create your function using `TypeFunction.create` method:
+Create your function using `TypeFunction.create` method. First parameter is a list of function parameter types. Second parameter is the function.
 
 ```
 var createUser = TypeFunction.create(['String'], function(name) {
@@ -21,6 +21,7 @@ createUser(123); // will throw an exception
 
 * String
 * Number
+* Integer
 * Object
 * Array
 * RegExp

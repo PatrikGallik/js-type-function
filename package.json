@@ -1,12 +1,12 @@
 {
   "name": "js-typed-function",
-  "version": "0.0.0",
-  "description": "Create function with typed parameters",
+  "version": "0.1.0",
+  "description": "Create a function with typed parameters",
   "license": "MIT",
   "author": {
-    "name": "Name here",
-    "email": "email@here",
-    "url": "https://github.com/NameHere"
+    "name": "Patrik Gallik",
+    "email": "patrik.gallik@gmail.com",
+    "url": "https://github.com/PatrikGallik"
   },
   "repository": {
     "type": "git",
